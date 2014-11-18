@@ -104,12 +104,12 @@ $('input').trigger('destroy');
 Extending
 -----------
 `$.hslPicker` is the picker object that can be extened. `$.hslPicker` also contains helpful color manipulation methods:
-    * `.hslToRgb(h, s, l)`
-    * `.rgbToHsl(r, g, b)`
-    * `.hexToRgb(hex)`
-    * `.rgbToHex(r, g, b)`
-    * `.hexToHsl(hex)`
-    * `.random()`
+* `.hslToRgb(h, s, l)`
+* `.rgbToHsl(r, g, b)`
+* `.hexToRgb(hex)`
+* `.rgbToHex(r, g, b)`
+* `.hexToHsl(hex)`
+* `.random()`
 
 Styles
 ----------------
