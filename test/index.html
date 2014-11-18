@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HSL Picker</title>
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                padding: 100px;
+            }
+        </style>
+        <link rel="stylesheet" href="../jquery.hsl-picker.css">
+    </head>
+    <body>
+
+        <input id="foo" type="hidden">
+        <input id="bar" type="hidden">
+        <input id="baz" type="hidden">
+        <input id="foofoo" type="hidden">
+        <input id="foobar" type="hidden">
+        <input id="foobaz" type="hidden">
+
+        <!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+        <script src="../libs/jquery.js"></script>
+        <script src="../jquery.hsl-picker.js"></script>
+        <script>
+            ;(function() {
+                $('#foo').hslPicker();
+                $('#bar').hslPicker({
+                    disableInputs: 'h',
+                    color: 'blue'
+                });
+                $('#baz').hslPicker({
+                    color: 'purple',
+                    disabled: true,
+                    disableInputs: 'sl'
+                });
+                $('#foofoo').hslPicker({
+                    color: '#00ff00',
+                    disabled: true,
+                    alwaysOpen: true
+                });
+                $('#foobar').hslPicker({
+                    disableInputs: [ 's', 'l' ],
+                    hsl: {
+                        h: 1,
+                        s: 0.5,
+                        l: 0.5
+                    }
+                });
+
+                $('#foobaz').hslPicker({
+                    color: '#ff0000',
+                    alwaysOpen: true
+                });
+                var colors = 'aliceblue|antiquewhite|aqua|aquamarine|azure|beige|bisque|black|blanchedalmond|blue|blueviolet|brown|burlywood|cadetblue|chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|cyan|darkblue|darkcyan|darkgoldenrod|darkgray|darkgreen|darkgrey|darkkhaki|darkmagenta|darkolivegreen'.split('|');
+                setInterval(function() {
+                    var picker = $('#foobaz').data('hslPicker'),
+                        randIdx = Math.floor(Math.random() * colors.length - 1) + 0,
+                        color = colors[randIdx];
+                    picker.update(color);
+                }, 1000);
+            }());
+        </script>
+    </body>
+</html>

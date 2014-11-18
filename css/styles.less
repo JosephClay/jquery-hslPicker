@@ -1,0 +1,230 @@
+.hsl-swatch {
+    position: relative;
+
+    width: 50px;
+    height: 50px;
+
+    background: #2a2a2a;
+
+    cursor: pointer;
+
+    border-radius: 5px;
+
+    transition: background-color 200ms ease;
+
+    &:before {
+        content: '';
+        position: absolute;
+        z-index: 1;
+
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        border-radius: 5px;
+
+        box-shadow: inset 0 0 0 2px rgba(0,0,0,0.5);
+    }
+
+    &.hsl-disabled {
+        cursor: default;
+
+        opacity: 0.3;
+    }
+}
+
+.hsl-picker {
+    visibility: hidden;
+
+    position: absolute;
+    z-index: -999;
+
+    top: 0;
+    left: 0;
+
+    @padding: 20px;
+    width: 400px + (@padding * 2);
+    height: 100px + (@padding * 2);
+
+    padding: @padding;
+
+    border-radius: 5px;
+
+    box-shadow: 0 5px 10px rgba(0,0,0,0.8);
+
+    user-select: none;
+
+    background: #2a2a2a;
+
+    transform: translate(-50%, -50%) scale(0.8);
+
+    opacity: 0;
+
+    transition: transform 100ms ease, opacity 150ms ease;
+
+    &.hsl-show {
+        visibility: visible;
+
+        z-index: 999;
+    }
+
+    &.hsl-open {
+        opacity: 1;
+
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &.hsl-always-open {
+        visibility: visible;
+
+        position: relative;
+
+        opacity: 1;
+
+        transform: translate(0, 0) scale(1);
+
+        transition: none;
+    }
+
+    &.hsl-disabled {
+        opacity: 0.3;
+
+        .hsl-bar, .hsl-handle {
+            cursor: default;
+        }
+    }
+}
+    .hsl-display-foreground {
+        position: relative;
+
+        width: 100px;
+        height: 100px;
+
+        float: left;
+
+        border-radius: 5px;
+
+        box-shadow: 0 1px 10px rgba(0,0,0,0.8);
+
+        &:before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            border-radius: 5px;
+
+            box-shadow: inset 0 0 0 5px rgba(0,0,0,0.5);
+        }
+    }
+        .hsl-display {
+            width: 100%;
+            height: 100%;
+
+            border-radius: 5px;
+
+            background: pink;
+        }
+
+    .hsl-bars {
+        float: right;
+
+        width: 275px;
+    }
+        .hsl-slider {
+            position: relative;
+
+            width: 275px;
+            height: 20px;
+
+            margin: 0 0 20px 0;
+
+            border-radius: 10px;
+
+            transition: background-color 100ms ease;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+            .hsl-bar {
+                position: relative;
+
+                width: 225px;
+                height: 20px;
+
+                float: left;
+
+                border-radius: 10px;
+
+                cursor: pointer;
+
+                box-shadow: inset 0 1px 2px 1px rgba(255,255,255,0.1),
+                    inset 0 1px rgba(255,255,255,0.2),
+                    inset 0 -1px 1px rgba(0,0,0,0.4),
+                    0 1px 1px rgba(0,0,0,0.4),
+                    #000 0 0 2px 1px;
+
+                &.hsl-hide {
+                    visibility: hidden;
+                }
+                &.hsl-disabled {
+                    opacity: 0.3;
+                }
+            }
+                .hsl-handle {
+                    content: '';
+
+                    position: absolute;
+                    z-index: 2;
+                    top: -1px;
+
+                    width: 22px;
+                    height: 22px;
+
+                    z-index: 1;
+
+                    cursor: pointer;
+
+                    background-color: #ddd;
+
+                    transition: background-color 0.4s;
+
+                    background-image: radial-gradient(top center, circle, rgba(255,255,255,0.9), rgba(255,255,255,0.2) 15px);
+
+                    border-radius: 50%;
+
+                    box-shadow: inset #fff 0 1px 1px,
+                        inset 0 -1px 1px rgba(0,0,0,0.4),
+                        0 1px 4px 0 rgba(0,0,0,0.4),
+                        0 0 2px rgba(0,0,0,0.6);
+                }
+
+            .hsl-input {
+                width: 40px;
+
+                float: left;
+
+                margin-left: 8px;
+                padding: 3px 4px;
+
+                border: 0;
+                border-radius: 4px;
+
+                box-shadow: 0 1px 0 rgba(255,255,255,0.1),
+                    inset 0 1px 7px 0 rgba(0,0,0,0.8);
+
+                color: rgba(255,255,255,0.8);
+                text-align: right;
+                text-shadow: rgba(0,0,0,0.5) 0 2px 1px;
+                font-size: .9em;
+
+                background-color: rgba(0,0,0,0.3);
+
+                transition: all 0.3s;
+            }
