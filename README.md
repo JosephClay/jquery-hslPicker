@@ -111,6 +111,15 @@ Extending
     * `.hexToHsl(hex)`
     * `.random()`
 
+Styles
+----------------
+Include the `jquery.hsl-picker.css` file. The styles rely on the border-box model which is used by [bootstrap](http://getbootstrap.com/) by default:
+```
+* {
+    box-sizing: border-box;
+}
+```
+
 Support
 ----------------
 
