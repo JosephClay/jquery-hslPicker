@@ -11,38 +11,37 @@
                 padding: 100px;
             }
         </style>
-        <link rel="stylesheet" href="../jquery.hsl-picker.css">
+        <link rel="stylesheet" href="../dist/jquery.hsl-picker.css">
     </head>
     <body>
 
-        <input id="foo" type="hidden">
-        <input id="bar" type="hidden">
-        <input id="baz" type="hidden">
-        <input id="foofoo" type="hidden">
-        <input id="foobar" type="hidden">
-        <input id="foobaz" type="hidden">
+        <input id="one" type="hidden">
+        <input id="two" type="hidden">
+        <input id="three" type="hidden">
+        <input id="four" type="hidden">
+        <input id="five" type="hidden">
+        <input id="six" type="hidden">
 
-        <!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
-        <script src="../libs/jquery.js"></script>
-        <script src="../jquery.hsl-picker.js"></script>
+        <script src="jquery.js"></script>
+        <script src="../dist/jquery.hsl-picker.js"></script>
         <script>
             ;(function() {
-                $('#foo').hslPicker();
-                $('#bar').hslPicker({
+                $('#one').hslPicker();
+                $('#two').hslPicker({
                     disableInputs: 'h',
                     color: 'blue'
                 });
-                $('#baz').hslPicker({
+                $('#three').hslPicker({
                     color: 'purple',
                     disabled: true,
                     disableInputs: 'sl'
                 });
-                $('#foofoo').hslPicker({
+                $('#four').hslPicker({
                     color: '#00ff00',
                     disabled: true,
                     alwaysOpen: true
                 });
-                $('#foobar').hslPicker({
+                $('#five').hslPicker({
                     disableInputs: [ 's', 'l' ],
                     hsl: {
                         h: 1,
@@ -51,13 +50,13 @@
                     }
                 });
 
-                $('#foobaz').hslPicker({
+                $('#six').hslPicker({
                     color: '#ff0000',
                     alwaysOpen: true
                 });
                 var colors = 'aliceblue|antiquewhite|aqua|aquamarine|azure|beige|bisque|black|blanchedalmond|blue|blueviolet|brown|burlywood|cadetblue|chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|cyan|darkblue|darkcyan|darkgoldenrod|darkgray|darkgreen|darkgrey|darkkhaki|darkmagenta|darkolivegreen'.split('|');
                 setInterval(function() {
-                    var picker = $('#foobaz').data('hslPicker'),
+                    var picker = $('#six').data('hslPicker'),
                         randIdx = Math.floor(Math.random() * colors.length - 1) + 0,
                         color = colors[randIdx];
                     picker.update(color);
