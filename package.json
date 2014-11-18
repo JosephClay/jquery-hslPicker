@@ -1,13 +1,22 @@
 {
   "name": "hsl-picker",
+  "title": "hsl-picker",
   "version": "0.0.1",
   "description": "",
   "main": "gulpfile.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "homepage": "https://github.com/JosephClay/jquery-hslPicker.git",
+  "author": {
+    "name": "Joseph Clay",
+    "email": "testingriven@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+  },
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer-core": "^4.0.0",
     "browserify": "^6.3.2",
