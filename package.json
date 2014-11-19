@@ -4,7 +4,6 @@
   "version": "0.0.2",
   "description": "hsl color picker",
   "main": "./js/",
-  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
