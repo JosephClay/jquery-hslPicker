@@ -24,3 +24,7 @@ $.fn[NAME] = function(options) {
         }
     });
 };
+
+if (typeof exports === 'object') {
+    module.exports = $.hslPicker;
+}
