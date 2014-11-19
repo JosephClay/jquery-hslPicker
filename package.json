@@ -14,7 +14,7 @@
     "email": "testingriven@gmail.com"
   },
   "repository": {
-    "type": "git",
+    "type": "git"
   },
   "license": "MIT",
   "devDependencies": {
