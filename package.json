@@ -14,7 +14,8 @@
     "email": "testingriven@gmail.com"
   },
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "https://github.com/JosephClay/jquery-hslPicker.git"
   },
   "license": "MIT",
   "devDependencies": {
