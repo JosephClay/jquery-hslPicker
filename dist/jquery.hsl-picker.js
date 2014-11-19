@@ -25,6 +25,10 @@ $.fn[NAME] = function(options) {
         }
     });
 };
+
+if (typeof exports === 'object') {
+    module.exports = $.hslPicker;
+}
 },{"./Picker":10,"./color-converter":11}],2:[function(require,module,exports){
 module.exports = function(colors) {
     var baseColor = colors[0],
