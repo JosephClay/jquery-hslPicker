@@ -43,7 +43,10 @@ var Picker = module.exports = function(input, options) {
     this.refresh();
 
     if (this.opts.disabled || this.input.is(':disabled')) { this.disable(); }
-    if (this.opts.alwaysOpen) { this.modal.alwaysOpen(); }
+    if (this.opts.alwaysOpen) {
+        this.modal.alwaysOpen();
+        this.input.after(this.modal.elem);
+    }
 
     // append the swatch after the refresh
     // so that it shows the correct color
