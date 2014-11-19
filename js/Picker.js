@@ -7,6 +7,13 @@ var $              = window.$,
     rgbToString    = require('./rgb-to-string'),
     colorConverter = require('./color-converter'),
 
+    body = (function() {
+        var bod;
+        return function() {
+            return bod || (bod = $('body'));
+        };
+    }()),
+
     // namespace
     ns = '.hsl-picker';
 
@@ -27,7 +34,7 @@ var Picker = module.exports = function(input, options) {
     // so that bars can be measured.
     // the modal is hidden so there's
     // no FOUS
-    this.input.after(this.modal.elem);
+    body().append(this.modal.elem);
     this.modal.init(this.opts);
 
     this._bindSwatch();
