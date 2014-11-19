@@ -1,7 +1,7 @@
 {
   "name": "jquery-hslpicker",
   "title": "jquery hsl picker",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "hsl color picker",
   "main": "./js/",
   "scripts": {
