@@ -513,8 +513,8 @@ Modal.prototype = {
             minX = 0 + (width / 2) + PADDING,
             minY = 0 + (height / 2) + PADDING,
 
-            maxX = winWidth - (width / 2) - PADDING,
-            maxY = winHeight - (height / 2) - PADDING,
+            maxX = winWidth - (width / 2) - PADDING + doc.scrollLeft(),
+            maxY = winHeight - (height / 2) - PADDING + doc.scrollTop(),
 
             centerX = offset.left + swatchWidth / 2,
             centerY = offset.top + swatchHeight / 2;
@@ -685,7 +685,10 @@ var Picker = module.exports = function(input, options) {
     this.refresh();
 
     if (this.opts.disabled || this.input.is(':disabled')) { this.disable(); }
-    if (this.opts.alwaysOpen) { this.modal.alwaysOpen(); }
+    if (this.opts.alwaysOpen) {
+        this.modal.alwaysOpen();
+        this.input.after(this.modal.elem);
+    }
 
     // append the swatch after the refresh
     // so that it shows the correct color
