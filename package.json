@@ -2,7 +2,7 @@
   "name": "hsl-picker",
   "title": "hsl-picker",
   "version": "0.0.2",
-  "description": "",
+  "description": "hsl color picker",
   "main": "./js/",
   "private": true,
   "scripts": {
