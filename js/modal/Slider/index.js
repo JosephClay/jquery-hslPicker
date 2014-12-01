@@ -7,6 +7,13 @@ var $   = window.$,
 
     DISABLED_CLASS = 'hsl-disabled';
 
+var ensureOffsetX = function(elem, e) {
+    if (e.offsetX !== undefined) { return e; }
+
+    e.offsetX = e.pageX - $(elem).offset().left;
+    return e;
+};
+
 var Slider = module.exports = function(elem, opts) {
     this.bar = $(elem);
     this.key = opts.key;
@@ -38,7 +45,7 @@ Slider.prototype = {
         this._handle.on('mousedown touchstart', function(e) {
                 if (self.disabled) { return; }
 
-                self._mousedown(e);
+                self._mousedown(ensureOffsetX(this, e));
             })
             .on('click tap', function(e) {
                 e.preventDefault();
@@ -48,7 +55,7 @@ Slider.prototype = {
         this.bar.on('click tap', function(e) {
             if (self.disabled) { return; }
 
-            self._click(e);
+            self._click(ensureOffsetX(this, e));
         });
 
         var input = this._input,

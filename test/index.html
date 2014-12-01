@@ -62,6 +62,24 @@
                     picker.update(color);
                 }, 1000);
             }());
+
+            var convert = (function() {
+                var picker = $.hslPicker,
+                    SATURATION = 0.7,
+                    LIGHTNESS = 0.5;
+
+
+                return function(hex) {
+                    var hsl = picker.hexToHsl(hex);
+                    hsl[1] = SATURATION;
+                    hsl[2] = LIGHTNESS;
+
+                    var rgb = picker.hslToRgb(hsl[0], hsl[1], hsl[2]);
+                    return picker.rgbToHex(rgb[0], rgb[1], rgb[2]);
+                };
+            }());
+
+
         </script>
     </body>
 </html>

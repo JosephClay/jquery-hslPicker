@@ -45,19 +45,41 @@ var supportsCSS3Gradients = require('./supports-css3-gradients'),
 
 module.exports = supportsCSS3Gradients ? css3Grad : svgGrad;
 },{"./css3-grad":2,"./supports-css3-gradients":4,"./svg-grad":6}],4:[function(require,module,exports){
-var $ = window.$,
+var div = document.createElement('div'),
 
-    div = document.createElement('div'),
+    prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
 
-    prefixes = ['-webkit-', ''],
+var setCss = function(str) {
+    div.style.cssText = str;
+};
 
-    gradients = $.map(prefixes, function(prefix) {
-        return 'background-image:' + prefix + 'linear-gradient(left top,#9f9, white);';
-    }).join(' ');
+var contains = function(str, substr) {
+    return !!~('' + str).indexOf(substr);
+};
 
-div.setAttribute('style', gradients);
+var supports_gradients = function() {
+    /**
+     * For CSS Gradients syntax, please see:
+     * webkit.org/blog/175/introducing-css-gradients/
+     * developer.mozilla.org/en/CSS/-moz-linear-gradient
+     * developer.mozilla.org/en/CSS/-moz-radial-gradient
+     * dev.w3.org/csswg/css3-images/#gradients-
+     */
+    var str1 = 'background-image:',
+        str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));',
+        str3 = 'linear-gradient(left top,#9f9, white);';
 
-module.exports = !!div.style.backgroundImage;
+    setCss(
+         // legacy webkit syntax (FIXME: remove when syntax not in use anymore)
+          (str1 + '-webkit- '.split(' ').join(str2 + str1)
+         // standard syntax             // trailing 'background-image:'
+          + prefixes.join(str3 + str1)).slice(0, -str1.length)
+    );
+
+    return contains(div.style.backgroundImage, 'gradient');
+};
+
+module.exports = supports_gradients();
 
 div = null;
 },{}],5:[function(require,module,exports){
@@ -180,6 +202,13 @@ var $   = window.$,
 
     DISABLED_CLASS = 'hsl-disabled';
 
+var ensureOffsetX = function(elem, e) {
+    if (e.offsetX !== undefined) { return e; }
+
+    e.offsetX = e.pageX - $(elem).offset().left;
+    return e;
+};
+
 var Slider = module.exports = function(elem, opts) {
     this.bar = $(elem);
     this.key = opts.key;
@@ -211,7 +240,7 @@ Slider.prototype = {
         this._handle.on('mousedown touchstart', function(e) {
                 if (self.disabled) { return; }
 
-                self._mousedown(e);
+                self._mousedown(ensureOffsetX(this, e));
             })
             .on('click tap', function(e) {
                 e.preventDefault();
@@ -221,7 +250,7 @@ Slider.prototype = {
         this.bar.on('click tap', function(e) {
             if (self.disabled) { return; }
 
-            self._click(e);
+            self._click(ensureOffsetX(this, e));
         });
 
         var input = this._input,
